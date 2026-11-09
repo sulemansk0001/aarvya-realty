@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <!-- Architectural roofline & 'A' apex in Luxury Gold -->
+  <path d="M24 4L6 20H13V42H21V29H27V42H35V20H42L24 4Z" fill="#D4AF37" />
+  <!-- Central doorway & internal structure framing the 'A' crossbeam -->
+  <path d="M21 21H27V26H21V21Z" fill="#FFFFFF" />
+  <path d="M22.5 32H25.5V42H22.5V32Z" fill="#0B1F3B" />
+  <!-- Subtle roof ridge highlight -->
+  <path d="M24 4L33 12H30L24 6.7L18 12H15L24 4Z" fill="#B9952D" />
+</svg>

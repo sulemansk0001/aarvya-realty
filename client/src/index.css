@@ -1,0 +1,119 @@
+@import './styles/motion-tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    background-color: #F5F7FA;
+    color: #0B1F3B;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    color: #0B1F3B;
+  }
+}
+
+/* Custom Luxury Gold Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #E0E6ED;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4AF37;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B9952D;
+}
+
+/* Partner Logo Marquee */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.marquee-container:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Navy & Gold Button Interaction System */
+.btn-primary {
+  background-color: #0B1F3B;
+  color: #FFFFFF;
+  border: 1px solid transparent;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-primary:hover {
+  background-color: #D4AF37;
+  color: #0B1F3B;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(212, 175, 55, 0.35);
+}
+
+.btn-gold {
+  background-color: #D4AF37;
+  color: #0B1F3B;
+  font-weight: 600;
+  border: 1px solid transparent;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-gold:hover {
+  background-color: #B9952D;
+  color: #0B1F3B;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(212, 175, 55, 0.4);
+}
+
+.btn-secondary {
+  border: 1px solid #D4AF37;
+  background-color: #FFFFFF;
+  color: #0B1F3B;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-secondary:hover {
+  background-color: #0B1F3B;
+  color: #FFFFFF;
+  border-color: #0B1F3B;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -4px rgba(11, 31, 59, 0.15);
+}
+
+/* Accessibility: Respect user reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .marquee-track {
+    animation: none !important;
+    overflow-x: auto;
+  }
+  .scroll-anim-item {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

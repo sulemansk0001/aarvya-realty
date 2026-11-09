@@ -1,0 +1,280 @@
+/**
+ * AARVYA REALTY - CENTRAL MOTION DESIGN TOKENS & LUXE SYSTEM
+ * Navy (#0B1F3B) & Gold (#D4AF37) Architectural Motion System
+ */
+
+:root {
+  /* Navy & Gold Brand System */
+  --color-primary: #0B1F3B;
+  --color-primary-dark: #071629;
+  --color-accent: #D4AF37;
+  --color-accent-hover: #B9952D;
+  --color-background: #F5F7FA;
+  --color-surface: #FFFFFF;
+  --color-border: #E0E6ED;
+  --color-text: #0B1F3B;
+  --color-muted: #667085;
+
+  /* Timing Tokens */
+  --motion-fast-duration: 200ms;
+  --motion-hover-duration: 350ms;
+  --motion-reveal-duration: 900ms;
+  --motion-slow-duration: 1400ms;
+  --motion-stagger-step: 60ms;
+
+  /* Easing Curves */
+  --motion-ease-reveal: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-ease-hover: cubic-bezier(0.25, 1, 0.5, 1);
+  --motion-ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --motion-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Elevation & Shadows */
+  --shadow-editorial-sm: 0 4px 16px -2px rgba(11, 31, 59, 0.05);
+  --shadow-editorial-md: 0 10px 30px -4px rgba(11, 31, 59, 0.08);
+  --shadow-editorial-lg: 0 20px 40px -10px rgba(11, 31, 59, 0.14);
+  --shadow-brand-glow: 0 14px 34px -6px rgba(212, 175, 55, 0.32);
+}
+
+/* ==========================================================================
+   Keyframes
+   ========================================================================== */
+
+/* Ken Burns Subtle Architectural Background Zoom */
+@keyframes kenBurnsSubtle {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Diagonal Translucent Shimmer Sheen */
+@keyframes shimmerWipe {
+  0% {
+    transform: translateX(-150%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(250%) skewX(-20deg);
+  }
+}
+
+/* Float Animation for Luxury Badges */
+@keyframes floatSubtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Continuous Logo Marquee */
+@keyframes partnerMarquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* Subtle Cursor Breathing / Blinking Animation */
+@keyframes cursorBreathe {
+  0%, 100% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(1.08);
+  }
+}
+
+/* ==========================================================================
+   Motion Classes & Utilities
+   ========================================================================== */
+
+.motion-ken-burns {
+  animation: kenBurnsSubtle 12s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+  will-change: transform;
+}
+
+.cursor-outer-breathe {
+  animation: cursorBreathe 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform, opacity;
+}
+
+/* Premium Button Shimmer Sheen Overlay */
+.btn-shimmer-wrapper {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn-shimmer-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.26) 50%,
+    transparent 100%
+  );
+  transform: translateX(-160%) skewX(-20deg);
+  pointer-events: none;
+  transition: opacity var(--motion-hover-duration) ease;
+}
+
+.btn-shimmer-wrapper:hover::after {
+  animation: shimmerWipe 900ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Editorial Underline Slide Hover */
+.editorial-link-underline {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.editorial-link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background-color: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform var(--motion-hover-duration) var(--motion-ease-reveal);
+}
+
+.editorial-link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* Luxury Card Lift with Ambient Diffused Shadow */
+.card-lift-hover {
+  transition: transform var(--motion-hover-duration) var(--motion-ease-hover),
+              box-shadow var(--motion-hover-duration) var(--motion-ease-hover),
+              border-color var(--motion-hover-duration) ease;
+  will-change: transform, box-shadow;
+}
+
+.card-lift-hover:hover {
+  transform: translate3d(0, -6px, 0);
+  box-shadow: 0 20px 38px -12px rgba(11, 31, 59, 0.14),
+              0 8px 18px -6px rgba(212, 175, 55, 0.12);
+  border-color: var(--color-accent);
+}
+
+/* Marquee Scroller with GPU acceleration */
+.partner-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: partnerMarquee 26s linear infinite;
+  will-change: transform;
+}
+
+.partner-marquee-container:hover .partner-marquee-track {
+  animation-play-state: paused;
+}
+
+/* Masked text reveal helper */
+.masked-text-line {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.masked-text-word {
+  display: inline-block;
+  transform: translate3d(0, 110%, 0);
+  opacity: 0;
+  transition: transform var(--motion-reveal-duration) var(--motion-ease-reveal),
+              opacity var(--motion-reveal-duration) var(--motion-ease-reveal);
+  will-change: transform, opacity;
+}
+
+.masked-text-word.is-revealed {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+
+/* ==========================================================================
+   Desktop Custom Cursor Styles
+   ========================================================================== */
+@media (pointer: fine) {
+  /* Apply cursor: none on desktop when custom cursor is active, but retain text caret */
+  body.has-custom-cursor {
+    cursor: none;
+  }
+
+  body.has-custom-cursor a,
+  body.has-custom-cursor button,
+  body.has-custom-cursor [role="button"],
+  body.has-custom-cursor input[type="submit"],
+  body.has-custom-cursor input[type="button"] {
+    cursor: none !important;
+  }
+
+  /* Strictly retain text selection caret for input and editable fields */
+  body.has-custom-cursor input[type="text"],
+  body.has-custom-cursor input[type="email"],
+  body.has-custom-cursor input[type="password"],
+  body.has-custom-cursor input[type="number"],
+  body.has-custom-cursor input[type="tel"],
+  body.has-custom-cursor textarea,
+  body.has-custom-cursor select,
+  body.has-custom-cursor [contenteditable="true"] {
+    cursor: text !important;
+  }
+}
+
+/* ==========================================================================
+   Accessibility: Reduced Motion Resets
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .motion-ken-burns,
+  .partner-marquee-track {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .masked-text-word {
+    transform: none !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
+
+  .card-lift-hover:hover {
+    transform: none !important;
+  }
+
+  .btn-shimmer-wrapper::after {
+    display: none !important;
+  }
+
+  .cursor-outer-breathe {
+    animation: none !important;
+  }
+}
